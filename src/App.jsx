@@ -1,33 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import Box from "./Box.jsx"
 import './App.css'
+import {useState} from "react"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [Counter, setCounter] = useState(0)
+  const [persons, setPersons] = useState([
+    {id: 1, name: " Saurov", title: " Developer", location: " Helsinki"},
+    {id: 2, name: " Robin", title: " cookie", location: " France"},
+    {id: 3,  name: " Jahid", title: " Manager", location: " Bangladesh"}
+  ]);
+
+  const increase =() => {
+    setCounter(Counter + 1)
+  };
+  const decrease =() =>{
+    setCounter(Counter - 1)
+  }
+  const reset = () => {
+    setCounter(0)
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+    <p>Counter: {Counter}</p>
+    <button onClick={increase}>Increase</button>
+    <button onClick={decrease}>Decrease</button>
+    <button onClick={reset}>Reset</button>
+
+    {persons.map((person) => (
+      <Box key ={person.id}
+      name={person.name}
+      title ={person.title}
+      location= {person.location} 
+      />
+      
+    
+  
+    ))}
+
+    
+      
     </>
   )
 }
