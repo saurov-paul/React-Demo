@@ -58,7 +58,7 @@ function App() {
       <Form
       changeFormHandler ={changeFormHandler}/>
       
-      <View formData={inputValue}/>
+      <View {...formData}/>
       
       {/* <Counter
         counter={counter}
